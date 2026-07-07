@@ -1,106 +1,46 @@
-[README.final2.md](https://github.com/user-attachments/files/29760464/README.final2.md)
 # World Architect + One-Shot Campaign Builder
 
-A master **prompt framework** that turns a one-line idea into a complete, immediately runnable,
-richly immersive one-shot tabletop RPG campaign — with a *connected* world, a fair-but-surprising
-mystery, real player agency, and GM tools to run it under time pressure.
+A master prompt framework that turns a one-line idea into a complete, ready-to-run one-shot
+tabletop RPG campaign — with a connected world, a fair-but-surprising mystery, real player
+agency, and practical tools for running it at the table.
 
-It is system-neutral by default (add D&D 5e, Pathfinder, Mothership, Blades in the Dark, Cairn,
-Cyberpunk RED, or anything else in the brief), and it is built to fight the single most common
-failure of AI-generated settings: **orphaned lore** — gorgeous detail that connects to nothing and
-never reaches the table.
+It is system-neutral by default (add D&D 5e, Pathfinder, Mothership, Blades in the Dark, or any
+other ruleset in the brief), and it is designed to fight the most common failure of AI-generated
+settings: lore that connects to nothing and never reaches the table.
 
-> **TL;DR:** open [`prompt/world-architect-oneshot.xml`](prompt/world-architect-oneshot.xml), fill in
-> the `<inputs>`, paste it into your model, and get a full GM-ready one-shot back. Then optionally
-> run [`tools/render.py`](tools/render.py) to turn the result into a print-ready PDF.
+## What's inside
 
+- prompt/ — the framework itself: a fully structured XML prompt, a readable Markdown version,
+  and a short copy-paste "quick-use" version.
+- docs/ — the output contract (every section the framework produces), the continuity system,
+  the design philosophy, and notes for using it with different models.
+- tools/ — an optional Python script that turns a generated campaign into a print-ready,
+  two-column "aged manuscript" PDF, in several color themes.
+- examples/ — two complete, fully original sample campaigns (a fantasy mystery and a
+  science-fiction mystery), each with source text and a rendered PDF.
+
+## How to use it
+
+1. Open the prompt in the prompt/ folder.
+2. Fill in as much of the brief as you like. Anything left blank becomes a labeled assumption —
+   the framework never stops to ask questions.
+3. Paste it into your model of choice and send. You get a full campaign back, in order, ending
+   with a continuity map and a one-page run sheet you can play from.
+4. Optional: save the result as a Markdown file and run the renderer in tools/ to make a PDF.
 
 ## What makes it different
 
-- **The world as a pressure system.** History → institutions → factions → conflicts → secrets →
-  clues → choices → endings. Every element is caused by something and pays off in play.
-- **Continuity checkpoints.** Build-time gates plus global invariants ensure nothing is orphaned,
-  and a required **World Continuity Map** proves it (see
-  [`docs/continuity-checkpoints.md`](docs/continuity-checkpoints.md)).
-- **A robust mystery.** Ten secrets, three clues each, at least two discovery methods — no
-  single-point-of-failure clues.
-- **Runnable, not just pretty.** Time-block pacing, an escalation clock, living-world tables,
-  fallback clues, shorten/expand levers, and a one-page run sheet you can play from cold.
-- **Entertainment guarantees & anti-genericity rules** baked into the contract.
+- The world is built as a pressure system: history creates institutions, institutions create
+  factions, factions create conflicts, conflicts create secrets, secrets create discovery,
+  discovery changes choices, and choices change the ending.
+- Continuity checkpoints run while the campaign is built, and a required continuity map at the
+  end proves that every faction, character, location, and secret connects to a cause and to play.
+- The mystery is robust: many secrets, several clues each, and no single point of failure.
+- The output is runnable, not just pretty: pacing by time block, an escalation clock,
+  random tables, fallback clues, and a condensed run sheet.
 
-## Quick start
+## License
 
-1. Choose your prompt:
-   - **XML (recommended, esp. for Claude):** [`prompt/world-architect-oneshot.xml`](prompt/world-architect-oneshot.xml)
-   - **Plain-text quick version:** [`prompt/quick-use.txt`](prompt/quick-use.txt)
-   - **Readable Markdown overview:** [`prompt/world-architect-oneshot.md`](prompt/world-architect-oneshot.md)
-2. Fill in as much of the brief as you like. Blank fields become the model's *labeled assumptions* —
-   it will never stop to ask you questions.
-3. Paste into your model of choice (see [`docs/using-with-models.md`](docs/using-with-models.md)) and
-   send. You'll get all 30+ sections in order, ending with a Continuity Map and a Run Sheet.
-4. *(Optional)* Save the result as `my-campaign.md` and render it:
-   ```bash
-   cd tools && pip install -r requirements.txt
-   python render.py ../my-campaign.md -o my-campaign.pdf \
-       --title "My Campaign" --subtitle "A One-Shot" --theme maroon
-   ```
-
-## Repository layout
-
-```
-world-architect-oneshot/
-├─ prompt/
-│  ├─ world-architect-oneshot.xml   # canonical, fully-structured prompt
-│  ├─ world-architect-oneshot.md    # human-readable framework overview
-│  └─ quick-use.txt                 # short copy-paste prompt
-├─ docs/
-│  ├─ output-contract.md            # every output section + required fields
-│  ├─ continuity-checkpoints.md     # the connectedness system
-│  ├─ design-philosophy.md          # why it's built this way
-│  ├─ using-with-models.md          # Claude / GPT / Gemini / local notes
-│  └─ images/                       # README preview screenshots
-├─ tools/
-│  ├─ render.py                     # Markdown campaign -> styled PDF (optional)
-│  ├─ requirements.txt
-│  └─ README.md
-├─ examples/
-│  ├─ the-ethereal/                 # original fantasy sample campaign (+PDF)
-│  └─ the-long-quiet/               # original sci-fi sample campaign (+PDF)
-├─ .github/                         # issue/PR templates + CI workflow
-├─ README.md
-├─ LICENSE                          # MIT — covers the tooling/code
-├─ LICENSE-CONTENT.md               # CC BY 4.0 — covers the prompt, docs, and examples
-├─ CONTRIBUTING.md
-├─ CHANGELOG.md
-└─ .gitignore
-```
-
-Each ends with a **World Continuity Map** — the framework's proof that every faction, NPC, location,
-and secret connects to a cause and to play.
-
-## The optional PDF renderer
-
-[`tools/render.py`](tools/render.py) turns any campaign Markdown into a two-column, "aged
-manuscript" PDF with a cover, read-aloud boxes, styled tables, and page numbers, in five color
-themes (`maroon`, `rust`, `slate`, `forest`, `ink`). It is entirely optional — the framework's
-value is the prompt; this just makes the output pretty. See [`tools/README.md`](tools/README.md).
-
-## Continuous integration
-
-Every push and pull request runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml), which
-lint-checks that the prompt XML is well-formed and contains the full output contract, then
-test-renders an example campaign to PDF and uploads it as an artifact.
-
-## Licensing
-
-- **Code** (everything in `tools/`) — **MIT** (see [`LICENSE`](LICENSE)).
-- **The prompt, the docs, and the example campaigns** — **CC BY 4.0**
-  (see [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md)). Use, adapt, and share with attribution.
-
-All example content is original and contains no third-party intellectual property, so the whole
-repository is safe to publish and share.
-
-## Contributing
-
-Ideas, new renderer themes, model-specific tuning notes, and additional **original** example
-campaigns are welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+The prompt, documentation, and example campaigns are licensed under CC BY 4.0. The code in
+tools/ is licensed under the MIT License. All example content is original and contains no
+third-party intellectual property.

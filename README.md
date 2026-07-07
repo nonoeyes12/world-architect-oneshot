@@ -1,8 +1,6 @@
 [README.final2.md](https://github.com/user-attachments/files/29760464/README.final2.md)
 # World Architect + One-Shot Campaign Builder
 
-![CI](https://github.com/nonoeyes12/world-architect-oneshot/actions/workflows/ci.yml/badge.svg)
-
 A master **prompt framework** that turns a one-line idea into a complete, immediately runnable,
 richly immersive one-shot tabletop RPG campaign — with a *connected* world, a fair-but-surprising
 mystery, real player agency, and GM tools to run it under time pressure.

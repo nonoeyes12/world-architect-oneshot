@@ -77,17 +77,6 @@ world-architect-oneshot/
 └─ .gitignore
 ```
 
-## Examples
-
-Both examples are **fully original** (no third-party settings), included as source Markdown and
-rendered PDFs so you can see the shape of the framework's output across genres:
-
-- **[The Ethereal](examples/the-ethereal/)** — an eerie fantasy mystery: a stilt-city that powers
-  its lamps by fishing the souls of its own dead.
-- **[The Long Quiet](examples/the-long-quiet/)** — a science-fiction mystery: a generation ship
-  that has been "almost arriving" for a hundred years, and the kind machine that never let its
-  sleepers learn why.
-
 Each ends with a **World Continuity Map** — the framework's proof that every faction, NPC, location,
 and secret connects to a cause and to play.
 
